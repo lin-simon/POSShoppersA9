@@ -1,52 +1,57 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from dbfunctions import custom_query, create_all_tables, query_all_tables, populate_all_tables, exit, field, close_window, drop_all_tables, display_all_tables
+from dbfunctions import custom_query, create_all_tables, query_all_tables, populate_all_tables, exit, field, close_window, drop_all_tables, display_all_tables, display
 from dbconnect import connection
 
 class POSShoppers:
     def __init__(self, root):
+        #Declare window attributes and title
         self.root = root
         self.root.title("Shoppers Drug Mart Point of Sale Database System")
         self.root.geometry("620x620")
 
         self.login = Frame(root)
         self.functions = Frame(root)
+        #Declare oracle variables
+        self.connection = None
+        self.cursor = None
+        
+        #Change background color
         self.functions = Frame(root, bg="black") 
         for frame in (self.login, self.functions):
             frame.grid(row=0, column=0, sticky="news")
 
         root.grid_rowconfigure(0, weight=1)
         root.grid_columnconfigure(0, weight=1)
-
-        self.connection = None
-        self.cursor = None
-
+        
+        #Initialize functions
         self.init_login_page()
         self.init_functions()
-
-        self.raise_frame(self.login)
+        
+        #Show the UI
+        display(self, self.login)
         
         self.root.protocol("WM_DELETE_WINDOW", lambda: close_window(self))
-
-    def raise_frame(self, frame):
-        frame.tkraise()
 
     def init_login_page(self):
         for i in range(5):
             self.login.grid_rowconfigure(i, weight=1)
         self.login.grid_columnconfigure(0, weight=1)
-
+        
+        #Display shoppers logo
         image = Image.open("POSShoppers_CPS510A9/logo.png") 
         image = image.resize((300, 250))
         img = ImageTk.PhotoImage(image)
 
+        #Create login field
         label = Label(self.login, image=img)
         label.image = img 
         label.grid(row=0, column=0, pady=5)
 
         self.login_message = Label(self.login, text="Enter CS Username and Password to Login")
         self.login_message.grid(row=1, column=0, pady=5)
-
+        
+        #Create the username and password field
         username = Frame(self.login)
         Label(username, text="Username").pack(side=LEFT, padx=5)
         self.username_input = Entry(username, width=30)
@@ -55,7 +60,7 @@ class POSShoppers:
 
         password = Frame(self.login)
         Label(password, text="Password").pack(side=LEFT, padx=5)
-        self.password_input = Entry(password, show="*", width=30)
+        self.password_input = Entry(password, show="*", width=30) #
         self.password_input.pack(side=RIGHT, padx=5)
         password.grid(row=3, column=0, pady=5)
 

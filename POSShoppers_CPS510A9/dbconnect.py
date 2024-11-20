@@ -1,5 +1,6 @@
 from tkinter import *
 import cx_Oracle
+from dbfunctions import display
 
 #Connect to the TMU database
 def connection(self):
@@ -14,7 +15,7 @@ def connection(self):
             if self.connection.version:
                 print(self.connection.version)
                 self.cursor = self.connection.cursor()
-                self.raise_frame(self.functions)
+                display(self, self.functions)
         #Avoid crashing if credentials are wrong
         except cx_Oracle.DatabaseError:
             self.login_message["text"] = "Incorrect username or password."

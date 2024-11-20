@@ -238,6 +238,10 @@ def populate_all_tables(self):
     finally:
         self.result.config(state=DISABLED)
 
+#Display frame
+def display(self, frame):
+    frame.tkraise()
+    
 #Exit the UI
 def exit(self):
     if self.cursor: 
