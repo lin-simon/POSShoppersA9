@@ -39,7 +39,7 @@ class POSShoppers:
         self.login.grid_columnconfigure(0, weight=1)
         
         #Display shoppers logo
-        image = Image.open("POSShoppers_CPS510A9/logo.png") 
+        image = Image.open("logo.png") 
         image = image.resize((300, 250))
         img = ImageTk.PhotoImage(image)
 
