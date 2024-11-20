@@ -14,11 +14,17 @@ Requirements:
 Once installed, start CS VPN connection and run main.py and login with your proper cs credentials to access the DB.
 
 You can begin by dropping all tables to start the DB from fresh, followed by selecting "Create all tables" to create tables in the DB.
+
 "Populate all tables" will fill the tables with dummy data. 
+
 "Query All Tables" will run a couple advanced queries and display the results of the queries.
+
 "Show all Tables" will show tables currently in the DB.
+
 "Run Custom Query" allows you to input your own syntactically correct sql query in the text field and run it once clicked.
+
 "Drop all Tables" removes all tables from the DB.
+
 "Exit" closes the program
 
 Below are some sample queries you can run using the custom query input (note: cx_oracle syntax does not require semicolons at the end of statements):
